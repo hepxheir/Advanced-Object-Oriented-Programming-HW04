@@ -1,15 +1,12 @@
 public class Singleton {
 
-    private static Singleton instance = null;
+    private static final Singleton instance = new Singleton();
 
     private Singleton() {
         System.out.println("Singleton constructor");
     }
 
     public static Singleton getInstance() {
-        if (instance == null) {
-            instance = new Singleton();
-        }
         return instance;
     }
 
