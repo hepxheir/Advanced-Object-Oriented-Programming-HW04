@@ -1,23 +1,18 @@
 public class Singleton {
-
-    private volatile static Singleton instance = null;
+    // inner static class
+    private static class InnerSingleton {
+        static final Singleton instance = new Singleton();
+    }
 
     private Singleton() {
         System.out.println("Singleton constructor");
     }
 
     public static Singleton getInstance() {
-        if (instance == null) {
-            synchronized (Singleton.class) {
-                if (instance == null) {
-                    instance = new Singleton();
-                }
-            }
-        }
-        return instance;
+        return InnerSingleton.instance;
     }
 
     public void print() {
-        System.out.println("Singleton instance hashCode = " + instance.hashCode());
+        System.out.println("Singleton instance hashCode = " + hashCode());
     }
 }
